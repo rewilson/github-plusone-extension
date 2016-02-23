@@ -11,10 +11,12 @@ function removePlusOnes() {
     ) {
       var avatar = comment.querySelector('a').cloneNode(true);
       var user = avatar.href;
-      if(alreadySeen.indexOf(user) < 0) {
+      // for tracking user feedback (but the users don't access GitHub - so we want to count all the +1s)
+        
+      //if(alreadySeen.indexOf(user) < 0) {
         avatars.push(avatar);
-        alreadySeen.push(user);
-      }
+        //alreadySeen.push(user);
+      //}
       if(text.match(/^(\+1|👍)$/) || !text) { // there wont be text if the comment is just a 👍
         comment.style.display = 'none';
       }
@@ -40,14 +42,14 @@ function removePlusOnes() {
       // Tap the power of tooltips
       avatar.className = 'avatar-link tooltipped tooltipped-s';
       avatar.setAttribute('aria-label', avatar.getAttribute('href').replace(/^\//, ''));
-
-      var img = avatar.querySelector('img');
+      // don't need the avatar pictures
+      /*var img = avatar.querySelector('img');
       img.className = '';
       img.style.height = '26px';
       img.style.width = '26px';
       img.style.margin = '0 2px';
       img.style.borderRadius = '3px';
-      avatarContainer.appendChild(avatar);
+      avatarContainer.appendChild(avatar);*/
     });
 
     var currentCount = document.querySelector('.js-plus-one-count');
